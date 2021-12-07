@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'app-main-page',
@@ -8,11 +9,37 @@ import { Component, OnInit } from '@angular/core';
 
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  anniversaryOptions = ["Wedding", "Engagement", "First Date"];
+  anniversaryIntervals = ["Weekly", "Monthly", "Yearly"];
+  typeSelection = "Wedding";
+  intervalSelection = "Weekly";
+  yearsSelection = 0;
+  inError = false;
+  submitted = false;
+
+  constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+  anniversaryForm = this.fb.group([
+  ])
+
+  setAnniversaryType(e : any) {
+    this.typeSelection = e.target.value;
+  }
+
+  setAnniversaryInterval(e : any) {
+    this.intervalSelection = e.target.value;
+  }
+
+  setNumberOfYears(e : any){
+    this.yearsSelection = e.target.value;
+  }
+
+  public handleError = (controlName: string, errorName: string) => {
+    return this.anniversaryForm.controls[controlName].hasError(errorName);
+  }
 
   createFile(): void {
     var content = "";

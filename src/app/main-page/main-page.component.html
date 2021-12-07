@@ -1,2 +1,33 @@
-<p>main-page works!</p>
-<button (click)="createFile()">Click Me</button>
+
+<p>Generate calendar events so that you never forget important anniversaries</p>
+<p>To use, fill out the form and press submit</p>
+
+<form [formGroup]="anniversaryForm" (ngSubmit)="createFile()" >
+
+    Anniversary Type:
+    <select formControlName="name" (change)="setAnniversaryType($event)">
+      <option *ngFor="let x of anniversaryOptions">{{x}}</option>
+    </select>
+
+    <br>
+
+    Number of Years:
+    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" (change)="setNumberOfYears($event)">
+
+    <div *ngIf="inError">
+        You must provide a value!
+    </div>
+
+    <br>
+
+    Interval:
+    <select (change)="setAnniversaryInterval($event)">
+      <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
+    </select>
+
+    <button>Submit</button>
+  </form>
+
+<div>{{typeSelection}}</div>
+<div>{{intervalSelection}}</div>
+<div>{{yearsSelection}}</div>
