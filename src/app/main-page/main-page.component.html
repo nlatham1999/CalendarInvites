@@ -11,6 +11,11 @@
 
     <br>
 
+    Start Date
+    <input type="date" (change)="setDate($event)">
+
+    <br>
+
     Number of Years:
     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" (change)="setNumberOfYears($event)">
 
@@ -31,3 +36,4 @@
 <div>{{typeSelection}}</div>
 <div>{{intervalSelection}}</div>
 <div>{{yearsSelection}}</div>
+<div>{{dateSelection}}</div>

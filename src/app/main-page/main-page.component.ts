@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
   typeSelection = "Wedding";
   intervalSelection = "Weekly";
   yearsSelection = 0;
+  dateSelection = "03/23/1999";
   inError = false;
   submitted = false;
 
@@ -35,6 +36,10 @@ export class MainPageComponent implements OnInit {
 
   setNumberOfYears(e : any){
     this.yearsSelection = e.target.value;
+  }
+
+  setDate(e : any){
+    this.dateSelection = e.target.value;
   }
 
   public handleError = (controlName: string, errorName: string) => {
