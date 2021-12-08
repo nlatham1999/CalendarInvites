@@ -1,39 +1,50 @@
+<!-- <h2>Example 1</h2>
+<input type="text" name="name" [(ngModel)]="name">
+<p> You entered {{name}}</p>
+<button (click)="clearName()">Clear</button> -->
+
 
 <p>Generate calendar events so that you never forget important anniversaries</p>
 <p>To use, fill out the form and press submit</p>
 
-<form [formGroup]="anniversaryForm" (ngSubmit)="createFile()" >
-
-    Anniversary Type:
-    <select formControlName="name" (change)="setAnniversaryType($event)">
-      <option *ngFor="let x of anniversaryOptions">{{x}}</option>
+<form (ngSubmit)="createFile()">
+    Anniversary Type
+    <select name="typeSelection" [(ngModel)]="typeSelection">
+        <option *ngFor="let x of anniversaryOptions">{{x}}</option>
     </select>
-
+    
     <br>
-
+    
+    Anniversary Date
+    <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
+    <br>
+    
     Start Date
-    <input type="date" (change)="setDate($event)">
-
-    <br>
-
-    Number of Years:
-    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" (change)="setNumberOfYears($event)">
-
-    <div *ngIf="inError">
-        You must provide a value!
-    </div>
-
+    <input 
+        type="date" 
+        name="dateSelection" 
+        (change)="setDate($event)"
+        value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
+    >
+    Use Today's Date<input type="checkbox" (change)="setDateToToday()">
     <br>
 
     Interval:
-    <select (change)="setAnniversaryInterval($event)">
+    <select name="intervalSelection" [(ngModel)]="intervalSelection">
       <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
     </select>
 
-    <button>Submit</button>
-  </form>
+    Number of Events:
+    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">
 
+    
+    <button>Submit</button>
+</form>
+
+
+<br>
 <div>{{typeSelection}}</div>
 <div>{{intervalSelection}}</div>
-<div>{{yearsSelection}}</div>
+<div>{{eventsNumber}}</div>
 <div>{{dateSelection}}</div>
+<div>{{anniversaryDate}}</div>

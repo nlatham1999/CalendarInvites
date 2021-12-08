@@ -9,41 +9,39 @@ import { FormBuilder } from "@angular/forms";
 
 export class MainPageComponent implements OnInit {
 
+  name="";
+  clearName() {
+    this.name="";
+  }
+
   anniversaryOptions = ["Wedding", "Engagement", "First Date"];
   anniversaryIntervals = ["Weekly", "Monthly", "Yearly"];
   typeSelection = "Wedding";
   intervalSelection = "Weekly";
-  yearsSelection = 0;
-  dateSelection = "03/23/1999";
+  eventsNumber = 0;
+  anniversaryDate = "12-31-9999";
+  dateSelection = "12-31-9999";
   inError = false;
   submitted = false;
+  useTodaysDate = false;
 
   constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  anniversaryForm = this.fb.group([
-  ])
+  setDateToToday(): void {
+    this.useTodaysDate = !this.useTodaysDate;
 
-  setAnniversaryType(e : any) {
-    this.typeSelection = e.target.value;
-  }
-
-  setAnniversaryInterval(e : any) {
-    this.intervalSelection = e.target.value;
-  }
-
-  setNumberOfYears(e : any){
-    this.yearsSelection = e.target.value;
+    if(!this.useTodaysDate){
+      return;
+    }
+    let currentDate = new Date();
+    this.dateSelection = currentDate.getMonth() + "-" + currentDate.getDate() + "-" + currentDate.getFullYear();
   }
 
   setDate(e : any){
     this.dateSelection = e.target.value;
-  }
-
-  public handleError = (controlName: string, errorName: string) => {
-    return this.anniversaryForm.controls[controlName].hasError(errorName);
   }
 
   createFile(): void {
