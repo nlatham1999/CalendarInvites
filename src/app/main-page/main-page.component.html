@@ -25,6 +25,7 @@
         name="dateSelection" 
         (change)="setDate($event)"
         value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
+        [disabled]="useTodaysDate"
     >
     Use Today's Date<input type="checkbox" (change)="setDateToToday()">
     <br>
