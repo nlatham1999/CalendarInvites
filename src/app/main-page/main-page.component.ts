@@ -47,16 +47,22 @@ export class MainPageComponent implements OnInit {
   addMonthToDate(date : string): string {
     var x = date.split("-");
     var month: number = +x[1] + 1;
+    var year: number = +x[0];
     if(month === 13){
       month = 1;
+      year += 1;
     }
-    var newDate: string = x[0] + "-" + month + "-" + x[2];
+    var monthString: string = month.toString();
+    if(month < 10){
+      monthString = "0" + monthString;
+    }
+    var newDate: string = year + "-" + monthString + "-" + x[2];
     return newDate;
   }
 
   addYearToDate(date: string): string {
     var x = date.split("-");
-    var year: number = +x[2] + 1;
+    var year: number = +x[0] + 1;
     var newDate: string = year + "-" + x[1] + "-" + x[2];
     return newDate;
   }
@@ -95,8 +101,10 @@ export class MainPageComponent implements OnInit {
 
     console.log(interval);
 
+
     while(count < this.eventsNumber){
       //increment the date
+      // console.log("before " + date);
       if(this.intervalSelection === "Weekly"){
         date = this.addYearToDate(date);
       }else if(this.intervalSelection === "Monthly"){
@@ -105,11 +113,11 @@ export class MainPageComponent implements OnInit {
         date = this.addYearToDate(date);
       }
 
-      console.log(date);
+      // console.log("after " + date);
 
       //if the date is older than the start date, then add
       if(date >= this.dateSelection){
-        console.log(date + " " + this.dateSelection);
+        // console.log(date + " " + this.dateSelection);
         var summary: string = anniversaryCount + " " + interval + " Anniversary!";
         var dateSplit = date.split("-");
         var dtstart: string = dateSplit[0] + dateSplit[1] + dateSplit[2];
@@ -129,8 +137,8 @@ export class MainPageComponent implements OnInit {
     var content = "";
     content += "BEGIN:VEVENT\n";
     content += "SUMMARY:"+summary+"\n";
-    content += "DTSTART:"+startDate+"\n";
-    content += "DTEND:"+endDate+"\n";
+    content += "DTSTART;VALUE=DATE:"+startDate+"\n";
+    // content += "DTEND:"+endDate+"\n";
     content += "CONTENT:"+summary+"\n";
     content += "DESCRIPTION:"+summary+"\n";
     content += "END:VEVENT\n";
