@@ -14,10 +14,11 @@ export class MainPageComponent implements OnInit {
     this.name="";
   }
 
-  anniversaryOptions = ["Wedding", "Engagement", "First Date"];
-  anniversaryIntervals = ["Weekly", "Monthly", "Yearly"];
+  anniversaryOptions = ["Birthday", "Wedding", "Engagement", "First Date"];
+  anniversaryIntervals = ["Monthly", "Yearly"];
   typeSelection = "Wedding";
-  intervalSelection = "Weekly";
+  intervalSelection = "Yearly";
+  birthdayName = "";
   eventsNumber = 0;
   anniversaryDate = "9999-12-31";
   dateSelection = "9999-12-31";
@@ -118,7 +119,22 @@ export class MainPageComponent implements OnInit {
       //if the date is older than the start date, then add
       if(date >= this.dateSelection){
         // console.log(date + " " + this.dateSelection);
-        var summary: string = anniversaryCount + " " + interval + " Anniversary!";
+        var summary: string = anniversaryCount + " " + interval + " " + this.typeSelection + " Anniversary!";
+        if(this.typeSelection === "Birthday" && interval === "Year"){
+          summary = this.birthdayName + "'s " + anniversaryCount.toString();
+          var mod: number = anniversaryCount % 10;
+          if(mod === 0 || mod === 4 || mod === 5 || mod === 6 || mod === 7 || mod === 8 || mod === 9){
+            summary += "th"
+          }else if(mod === 1){
+            summary += "st";
+          }else if(mod === 2){
+            summary += "nd";
+          }else if(mod === 3){
+            summary += "rd";
+          }
+          summary += " Birthday";
+        }
+
         var dateSplit = date.split("-");
         var dtstart: string = dateSplit[0] + dateSplit[1] + dateSplit[2];
         var dtend: string = dtstart;

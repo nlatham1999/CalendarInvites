@@ -8,18 +8,22 @@
 <p>To use, fill out the form and press submit</p>
 
 <form (ngSubmit)="createFile()">
-    Anniversary Type
+    <div>Anniversary Type</div>
     <select name="typeSelection" [(ngModel)]="typeSelection">
         <option *ngFor="let x of anniversaryOptions">{{x}}</option>
     </select>
-    
+
+    <br [hidden]="typeSelection!='Birthday'">
+    <div [hidden]="typeSelection!='Birthday'">Name</div>
+    <input [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
+
     <br>
     
-    Anniversary Date
+    <div>Anniversary Date</div>
     <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
     <br>
     
-    Start Date
+    <div>Start Date</div>
     <input 
         type="date" 
         name="dateSelection" 
@@ -30,15 +34,15 @@
     Use Today's Date<input type="checkbox" (change)="setDateToToday()">
     <br>
 
-    Interval:
+    <div>Interval</div>
     <select name="intervalSelection" [(ngModel)]="intervalSelection">
       <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
     </select>
 
-    Number of Events:
+    <div>Number of Events</div>
     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">
 
-    
+    <br>
     <button>Submit</button>
 </form>
 
@@ -49,3 +53,4 @@
 <div>{{eventsNumber}}</div>
 <div>{{dateSelection}}</div>
 <div>{{anniversaryDate}}</div>
+<div>{{birthdayName}}</div>
