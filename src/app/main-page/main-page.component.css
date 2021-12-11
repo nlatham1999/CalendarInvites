@@ -1,3 +1,56 @@
-div {
+
+
+.mainPage {
+    --marginMain: 10vmin;
+
+    margin: var(--marginMain);
+    /* position: absolute; */
     text-align: center;
+    background-color:whitesmoke;
+    min-width: calc(100vw - (2 * var(--marginMain)));
+    min-height: calc(100vh - (2 * var(--marginMain)));
+
+    border-radius: 4vmin;
+
+}
+
+h1 {
+    padding: 5vmin;
+
+}
+
+.row {
+    display: flex;
+}
+
+.textBoxLandscape {
+    flex: 50%;
+    min-height: 100%;
+    text-align: center;
+    display: table-cell;
+    padding-left: 5vw;
+    padding-right: 10vw;
+    padding-top: 10vh;
+
+}
+
+.textBoxPotrait {
+    margin: 0;
+}
+
+.formBoxLandscape {
+    /* padding-left: 12vw; */
+    padding-right: 5vw;
+    flex: 50%;
+}
+
+.formBoxPortrait {
+}
+
+.formLabel {
+}
+
+.formSection {
+    text-align: left;
+    margin: 1vmin
 }

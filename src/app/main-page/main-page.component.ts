@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
     this.name="";
   }
 
+  portrait = false;
   anniversaryOptions = ["Birthday", "Wedding", "Engagement", "First Date"];
   anniversaryIntervals = ["Monthly", "Yearly"];
   typeSelection = "Wedding";
@@ -29,6 +30,11 @@ export class MainPageComponent implements OnInit {
   constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
+      if (window.innerHeight > window.innerWidth) {
+        this.portrait = true;
+      } else {
+        this.portrait = false;
+      }
   }
 
   setDateToToday(): void {

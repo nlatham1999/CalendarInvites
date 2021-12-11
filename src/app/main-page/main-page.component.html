@@ -1,53 +1,55 @@
 
-<div>
-    <p>Generate calendar events so that you never forget important anniversaries</p>
-    <p>To use, fill out the form and press submit</p>
+<div  class="mainPage">
+    <h1>Anniversary Reminder</h1>
+    <div [ngClass]="!portrait ? 'row' : ''">
+        <div [ngClass]="!portrait ? 'textBoxLandscape' : 'textBoxPortrait'">
+            <p>Generate calendar events so that you never forget important anniversaries</p>
+            <p>To use, fill out the form and press submit</p>
+        </div>
 
-    <form (ngSubmit)="createFile()">
-        <div>Anniversary Type</div>
-        <select name="typeSelection" [(ngModel)]="typeSelection">
-            <option *ngFor="let x of anniversaryOptions">{{x}}</option>
-        </select>
+        <form [ngClass]="!portrait ? 'formBoxLandscape' : 'formBoxPortrait'" (ngSubmit)="createFile()">
+            <div class="formSection">
+                <div class="formLabel">Anniversary Type</div>
+                <select class="dropdown" name="typeSelection" [(ngModel)]="typeSelection">
+                    <option *ngFor="let x of anniversaryOptions">{{x}}</option>
+                </select>
+            </div>
 
-        <br [hidden]="typeSelection!='Birthday'">
-        <div [hidden]="typeSelection!='Birthday'">Name</div>
-        <input [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
+            <div class="formSection">
+                <div [hidden]="typeSelection!='Birthday'">Name</div>
+                <input [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
+            </div>
 
-        <br>
-        
-        <div>Anniversary Date</div>
-        <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
-        <br>
-        
-        <div>Start Date</div>
-        <input 
-            type="date" 
-            name="dateSelection" 
-            (change)="setDate($event)"
-            value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
-            [disabled]="useTodaysDate"
-        >
-        Use Today's Date<input type="checkbox" (change)="setDateToToday()">
-        <br>
+            <div class="formSection">
+                <div>Anniversary Date</div>
+                <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
+            </div>
+            
+            <div class="formSection">
+                <div>Start Date</div>
+                <div>Use Today's Date<input type="checkbox" (change)="setDateToToday()"></div>
+                <input 
+                    type="date" 
+                    name="dateSelection" 
+                    (change)="setDate($event)"
+                    value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
+                    [disabled]="useTodaysDate"
+                >
+            </div>
 
-        <div>Interval</div>
-        <select name="intervalSelection" [(ngModel)]="intervalSelection">
-        <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
-        </select>
+            <div class="formSection">
+                <div>Interval</div>
+                <select name="intervalSelection" [(ngModel)]="intervalSelection">
+                    <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
+                </select>
+            </div>
 
-        <div>Number of Events</div>
-        <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">
-
-        <br>
-        <button>Submit</button>
-    </form>
+            <div class="formSection">
+                <div>Number of Events</div>
+                <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">    
+            </div>
+            
+            <button>Submit</button>
+        </form>
+    </div>
 </div>
-
-
-<br>
-<div>{{typeSelection}}</div>
-<div>{{intervalSelection}}</div>
-<div>{{eventsNumber}}</div>
-<div>{{dateSelection}}</div>
-<div>{{anniversaryDate}}</div>
-<div>{{birthdayName}}</div>

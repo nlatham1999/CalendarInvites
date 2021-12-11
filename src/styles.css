@@ -3,5 +3,13 @@
 
 body {
     font-family: 'Quicksand', Helvetica, sans-serif;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background-image: url("./assets/purple-blue.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size:cover;
+
+    margin: 0;
+    
 }
