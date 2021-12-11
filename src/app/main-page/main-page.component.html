@@ -1,45 +1,47 @@
 
-<p>Generate calendar events so that you never forget important anniversaries</p>
-<p>To use, fill out the form and press submit</p>
+<div>
+    <p>Generate calendar events so that you never forget important anniversaries</p>
+    <p>To use, fill out the form and press submit</p>
 
-<form (ngSubmit)="createFile()">
-    <div>Anniversary Type</div>
-    <select name="typeSelection" [(ngModel)]="typeSelection">
-        <option *ngFor="let x of anniversaryOptions">{{x}}</option>
-    </select>
+    <form (ngSubmit)="createFile()">
+        <div>Anniversary Type</div>
+        <select name="typeSelection" [(ngModel)]="typeSelection">
+            <option *ngFor="let x of anniversaryOptions">{{x}}</option>
+        </select>
 
-    <br [hidden]="typeSelection!='Birthday'">
-    <div [hidden]="typeSelection!='Birthday'">Name</div>
-    <input [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
+        <br [hidden]="typeSelection!='Birthday'">
+        <div [hidden]="typeSelection!='Birthday'">Name</div>
+        <input [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
 
-    <br>
-    
-    <div>Anniversary Date</div>
-    <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
-    <br>
-    
-    <div>Start Date</div>
-    <input 
-        type="date" 
-        name="dateSelection" 
-        (change)="setDate($event)"
-        value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
-        [disabled]="useTodaysDate"
-    >
-    Use Today's Date<input type="checkbox" (change)="setDateToToday()">
-    <br>
+        <br>
+        
+        <div>Anniversary Date</div>
+        <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
+        <br>
+        
+        <div>Start Date</div>
+        <input 
+            type="date" 
+            name="dateSelection" 
+            (change)="setDate($event)"
+            value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
+            [disabled]="useTodaysDate"
+        >
+        Use Today's Date<input type="checkbox" (change)="setDateToToday()">
+        <br>
 
-    <div>Interval</div>
-    <select name="intervalSelection" [(ngModel)]="intervalSelection">
-      <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
-    </select>
+        <div>Interval</div>
+        <select name="intervalSelection" [(ngModel)]="intervalSelection">
+        <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
+        </select>
 
-    <div>Number of Events</div>
-    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">
+        <div>Number of Events</div>
+        <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">
 
-    <br>
-    <button>Submit</button>
-</form>
+        <br>
+        <button>Submit</button>
+    </form>
+</div>
 
 
 <br>
