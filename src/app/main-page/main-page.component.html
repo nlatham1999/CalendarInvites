@@ -3,7 +3,7 @@
       <h4 class="modal-title" id="modal-basic-title">Anniversary Reminder</h4>
     </div>
     <div class="modal-body">
-        <p>made by me (<a href="https://nicholaslatham.com">Nick Latham</a>)</p>
+        <p>made with AngularJS and lots of TLC by me (<a href="https://nicholaslatham.com">Nick Latham</a>)</p>
         <p>for media inquiries contact me at nicholaslatham1999@gmail.com</p>
         <p>note: I am not responsible for the potentially thousands of events you have the power to create</p>
     </div>
@@ -19,7 +19,7 @@
     <div [ngClass]="!portrait ? 'row' : 'portraitFontSize'">
         <div [ngClass]="!portrait ? 'textBoxLandscape' : 'textBoxPortrait'">
             <p>generate calendar events so that you never forget those important anniversaries</p>
-            <p>to use, fill out the form and press submit</p>
+            <p>to use, fill out the form and press generate</p>
         </div>
 
         <form [ngClass]="!portrait ? 'formBoxLandscape' : 'formBoxPortrait'" (ngSubmit)="createFile()">
@@ -67,7 +67,7 @@
                 <input class="textInput" type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">    
             </div>
             
-            <button class="btn btn-outline-dark button">submit</button>
+            <button class="btn btn-outline-dark button">generate</button>
         </form>
     </div>
 </div>
