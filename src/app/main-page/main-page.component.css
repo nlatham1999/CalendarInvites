@@ -1,4 +1,29 @@
 
+.infoButton {
+    background-color: whitesmoke;
+    margin-top: 1vmin;
+    border-radius: 5vmin;
+    text-align: center;
+    top: 0;
+    z-index: 2;
+    position: fixed;
+    right: 10vmin;
+}
+
+.infoButton2 {
+    border-width: 0 !important; 
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: white;
+    padding: 0;
+    margin-top: 1vmin;
+    border-radius: 5vmin;
+    text-align: center;
+    top: 0;
+    z-index: 2;
+    position: fixed;
+    right: 10vmin;
+}
 
 .mainPage {
     --marginMain: 10vmin;
@@ -11,11 +36,15 @@
     min-height: calc(100vh - (2 * var(--marginMain)));
 
     border-radius: 4vmin;
+}
 
+.portraitFontSize {
+    font-size: 2.1vmax;
 }
 
 h1 {
     padding: 5vmin;
+    margin-bottom: 0;
 
 }
 
@@ -34,8 +63,9 @@ h1 {
 
 }
 
-.textBoxPotrait {
-    margin: 0;
+.textBoxPortrait {
+    margin-left: 5vw;
+    width: 70vw;
 }
 
 .formBoxLandscape {
@@ -44,7 +74,16 @@ h1 {
     flex: 50%;
 }
 
+.col {
+    flex: 40%;
+    margin-right: 0;
+    padding-right: 0;
+
+}
+
 .formBoxPortrait {
+    margin-left: 5vw;
+    width: 70vw;
 }
 
 .formLabel {
@@ -52,5 +91,59 @@ h1 {
 
 .formSection {
     text-align: left;
-    margin: 1vmin
+    margin: 1vmin;
+    /* width: 100%; */
+}
+
+.dropdown {
+    background-color: white;
+    border-width: 1px;
+    border-color: darkgrey;
+    width: 100%;
+    font-size: inherit;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.dateInput {
+    border-width: 1px;
+    border-color: darkgrey;
+    background-color: white;
+    width: 100%;
+    font-size: inherit;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.textInput {
+    border-width: 1px;
+    border-color: darkgrey;
+    background-color: white;
+    width: 100%;
+    font-size: inherit;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.checkBox {
+    flex: 60%;
+    text-align: right;
+    padding-right: 4vmin;
+}
+
+.checkBoxInput {
+    background-color: white;
+    border-width: 1px;
+    border-color: darkgrey;
+}
+
+.button {
+    /* background-color: #007bff; */
+    /* border: none; */
+    /* border-radius: 10px; */
+    font-size: inherit;
+    /* padding: 1vmin; */
+    /* color: white; */
+    float: left;
+    margin: 1vmin;
 }

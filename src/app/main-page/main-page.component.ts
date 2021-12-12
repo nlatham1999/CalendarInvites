@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-main-page',
@@ -13,10 +14,10 @@ export class MainPageComponent implements OnInit {
   clearName() {
     this.name="";
   }
-
+  closeResult = '';
   portrait = false;
-  anniversaryOptions = ["Birthday", "Wedding", "Engagement", "First Date"];
-  anniversaryIntervals = ["Monthly", "Yearly"];
+  anniversaryOptions = ["birthday", "wedding", "engagement", "first date"];
+  anniversaryIntervals = ["monthly", "yearly"];
   typeSelection = "Wedding";
   intervalSelection = "Yearly";
   birthdayName = "";
@@ -27,7 +28,7 @@ export class MainPageComponent implements OnInit {
   submitted = false;
   useTodaysDate = false;
 
-  constructor(public fb: FormBuilder) { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
       if (window.innerHeight > window.innerWidth) {
@@ -35,6 +36,14 @@ export class MainPageComponent implements OnInit {
       } else {
         this.portrait = false;
       }
+  }
+
+  openModal(content : any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed`;
+    });
   }
 
   setDateToToday(): void {

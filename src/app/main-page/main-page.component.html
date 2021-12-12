@@ -1,35 +1,53 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Anniversary Reminder</h4>
+    </div>
+    <div class="modal-body">
+        <p>made by me (<a href="https://nicholaslatham.com">Nick Latham</a>)</p>
+        <p>for media inquiries contact me at nicholaslatham1999@gmail.com</p>
+        <p>note: I am not responsible for the potentially thousands of events you have the power to create</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">close</button>
+    </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary button infoButton2" (click)="openModal(content)">about</button>
 
 <div  class="mainPage">
-    <h1>Anniversary Reminder</h1>
-    <div [ngClass]="!portrait ? 'row' : ''">
+    <h1>anniversary reminder</h1>
+    <div [ngClass]="!portrait ? 'row' : 'portraitFontSize'">
         <div [ngClass]="!portrait ? 'textBoxLandscape' : 'textBoxPortrait'">
-            <p>Generate calendar events so that you never forget important anniversaries</p>
-            <p>To use, fill out the form and press submit</p>
+            <p>generate calendar events so that you never forget those important anniversaries</p>
+            <p>to use, fill out the form and press submit</p>
         </div>
 
         <form [ngClass]="!portrait ? 'formBoxLandscape' : 'formBoxPortrait'" (ngSubmit)="createFile()">
             <div class="formSection">
-                <div class="formLabel">Anniversary Type</div>
+                <div class="formLabel">anniversary type</div>
                 <select class="dropdown" name="typeSelection" [(ngModel)]="typeSelection">
                     <option *ngFor="let x of anniversaryOptions">{{x}}</option>
                 </select>
             </div>
 
             <div class="formSection">
-                <div [hidden]="typeSelection!='Birthday'">Name</div>
-                <input [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
+                <div [hidden]="typeSelection!='Birthday'">name</div>
+                <input class="textInput" [hidden]="typeSelection!='Birthday'" name="birthdayName" type="text" [(ngModel)]="birthdayName">
             </div>
 
             <div class="formSection">
-                <div>Anniversary Date</div>
-                <input type="date" name="anniversaryDate" [(ngModel)]="anniversaryDate">
+                <div>anniversary date</div>
+                <input type="date" class="dateInput" name="anniversaryDate" [(ngModel)]="anniversaryDate">
             </div>
             
             <div class="formSection">
-                <div>Start Date</div>
-                <div>Use Today's Date<input type="checkbox" (change)="setDateToToday()"></div>
+                <div class="row">
+                    <div class="col">start date</div>
+                    <div class="checkBox"><input class="checkBoxInput" type="checkbox" (change)="setDateToToday()">&nbsp;Use Today's Date</div>    
+                </div>
                 <input 
                     type="date" 
+                    class="dateInput"
                     name="dateSelection" 
                     (change)="setDate($event)"
                     value="{{ dateSelection | date:'yyyy-MM-dd' }}" 
@@ -38,18 +56,18 @@
             </div>
 
             <div class="formSection">
-                <div>Interval</div>
-                <select name="intervalSelection" [(ngModel)]="intervalSelection">
+                <div>interval</div>
+                <select class="dropdown" name="intervalSelection" [(ngModel)]="intervalSelection">
                     <option *ngFor="let x of anniversaryIntervals">{{x}}</option>
                 </select>
             </div>
 
             <div class="formSection">
-                <div>Number of Events</div>
-                <input type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">    
+                <div>number of events</div>
+                <input class="textInput" type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">    
             </div>
             
-            <button>Submit</button>
+            <button class="btn btn-outline-dark button">submit</button>
         </form>
     </div>
 </div>
