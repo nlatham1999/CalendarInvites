@@ -22,8 +22,8 @@ export class MainPageComponent implements OnInit {
   intervalSelection = "Yearly";
   birthdayName = "";
   eventsNumber = 0;
-  anniversaryDate = "9999-12-31";
-  dateSelection = "9999-12-31";
+  anniversaryDate = "1999-03-23";
+  dateSelection = "1999-03-23";
   inError = false;
   submitted = false;
   useTodaysDate = false;
