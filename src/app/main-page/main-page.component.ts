@@ -84,6 +84,7 @@ export class MainPageComponent implements OnInit {
   }
 
   createFile(): void {
+
     var content = "";
     content += "BEGIN:VCALENDAR\n";
     content += "VERSION:2.0\n";
@@ -105,11 +106,11 @@ export class MainPageComponent implements OnInit {
     var date: string = this.anniversaryDate;
     var interval: string = "";
 
-    if(this.intervalSelection === "Weekly"){
+    if(this.intervalSelection === "weekly"){
       interval = "Week";
-    }else if(this.intervalSelection === "Monthly"){
+    }else if(this.intervalSelection === "monthly"){
       interval = "Month";
-    }else if(this.intervalSelection === "Yearly"){
+    }else if(this.intervalSelection === "yearly"){
       interval = "Year";
     }else{
       return "";
@@ -121,11 +122,11 @@ export class MainPageComponent implements OnInit {
     while(count < this.eventsNumber){
       //increment the date
       // console.log("before " + date);
-      if(this.intervalSelection === "Weekly"){
+      if(this.intervalSelection === "weekly"){
         date = this.addYearToDate(date);
-      }else if(this.intervalSelection === "Monthly"){
+      }else if(this.intervalSelection === "monthly"){
         date = this.addMonthToDate(date);
-      }else if(this.intervalSelection === "Yearly"){
+      }else if(this.intervalSelection === "yearly"){
         date = this.addYearToDate(date);
       }
 
@@ -135,7 +136,7 @@ export class MainPageComponent implements OnInit {
       if(date >= this.dateSelection){
         // console.log(date + " " + this.dateSelection);
         var summary: string = anniversaryCount + " " + interval + " " + this.typeSelection + " Anniversary!";
-        if(this.typeSelection === "Birthday" && interval === "Year"){
+        if(this.typeSelection === "birthday" && interval === "Year"){
           summary = this.birthdayName + "'s " + anniversaryCount.toString();
           var mod: number = anniversaryCount % 10;
           if(mod === 0 || mod === 4 || mod === 5 || mod === 6 || mod === 7 || mod === 8 || mod === 9){

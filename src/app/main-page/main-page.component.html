@@ -67,7 +67,7 @@
                 <input class="textInput" type="number" min="0" step="1" oninput="validity.valid||(value='');" name="eventsNumber" [(ngModel)]="eventsNumber">    
             </div>
             
-            <button class="btn btn-outline-dark button">generate</button>
+            <button class="btn btn-outline-dark button" (ngClick)="createFile()">generate</button>
         </form>
     </div>
 </div>
