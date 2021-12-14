@@ -14,12 +14,12 @@
     border-width: 0 !important; 
     background-color: transparent !important;
     border-color: transparent !important;
-    color: white;
+    color: white !important;
     padding: 0;
-    margin-top: 1vmin;
+    margin-top: 2vmin;
     border-radius: 5vmin;
     text-align: center;
-    top: 0;
+    top: 1.5vmin;
     z-index: 2;
     position: fixed;
     right: 10vmin;
@@ -98,7 +98,7 @@ h1 {
 .dropdown {
     background-color: white;
     border-width: 1px;
-    border-color: darkgrey;
+    border-color: black;
     width: 100%;
     font-size: inherit;
     padding: 2px;
@@ -107,7 +107,7 @@ h1 {
 
 .dateInput {
     border-width: 1px;
-    border-color: darkgrey;
+    border-color: black !important;
     background-color: white;
     width: 100%;
     font-size: inherit;
@@ -117,7 +117,7 @@ h1 {
 
 .textInput {
     border-width: 1px;
-    border-color: darkgrey;
+    border-color: black;
     background-color: white;
     width: 100%;
     font-size: inherit;
@@ -134,7 +134,9 @@ h1 {
 .checkBoxInput {
     background-color: white;
     border-width: 1px;
-    border-color: darkgrey;
+    border-radius: 0;
+    border-color: black !important;
+    box-shadow: none;
 }
 
 .button {
@@ -146,4 +148,7 @@ h1 {
     /* color: white; */
     float: left;
     margin: 1vmin;
+    color: black;
+    border-color: black;
+    background-color: white;
 }
